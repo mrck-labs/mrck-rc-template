@@ -1,1 +1,1 @@
-mrck-labs React Component Template
+mrck-labs React Component Templates
