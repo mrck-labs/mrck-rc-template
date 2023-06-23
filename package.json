@@ -17,6 +17,10 @@
     "type": "module",
     "main": "dist/index.cjs",
     "types": "dist/index.d.ts",
+    "files": [
+        "/dist",
+        "README.md"
+    ],
     "scripts": {
         "build:dec": "cd src && tsc --declaration --emitDeclarationOnly -p ../tsconfig.json && cd .. && resolve-tspaths",
         "build:clean:all": "rimraf ./dist",
