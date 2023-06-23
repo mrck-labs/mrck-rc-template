@@ -1,3 +1,3 @@
 module.exports = {
-  '**/*.{js,jsx,mjs,ts,tsx}': ['yarn prettier'],
+    '**/*.{js,jsx,mjs,ts,tsx}': ['yarn prettier'],
 };

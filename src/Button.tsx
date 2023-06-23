@@ -1,15 +1,13 @@
-import React from "react";
+import React from 'react';
 
 interface ButtonProps {
-    handleClick: () => void
-    content: string
+    handleClick: () => void;
+    content: string;
 }
 
 const Button = (props: ButtonProps) => {
-    const {handleClick, content } = props
-    return (
-        <button onClick={handleClick}>{content}</button>
-    )
-}
+    const { handleClick, content } = props;
+    return <button onClick={handleClick}>{content}</button>;
+};
 
-export {Button}
+export { Button };

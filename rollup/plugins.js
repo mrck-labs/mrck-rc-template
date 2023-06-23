@@ -9,36 +9,36 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
 export const generalPlugins = () =>
-  [
-    peerDepsExternal(),
-    resolve({
-      preferBuiltins: true,
-    }),
-    postcss({
-      config: {
-        path: '../src/scss/postcss.config.js',
-      },
-      plugins: [],
-      minimize: true,
-      use: ['sass'],
-      inject: {
-        insertAt: 'top',
-      },
-    }),
-    commonjs(),
-    json(),
-    ts({
-      transpiler: 'swc',
-      transpileOnly: true,
-    }),
-    preserveDirectives({ supressPreserveModulesWarning: true }),
-    terser({
-      compress: {
-        directives: false,
-      },
-      output: {
-        comments: 'all',
-      },
-    }),
-    process.env.CI || process.env.COMPONENT_TO_BUILD ? null : filesize(),
-  ].filter(Boolean);
+    [
+        peerDepsExternal(),
+        resolve({
+            preferBuiltins: true,
+        }),
+        postcss({
+            config: {
+                path: '../src/scss/postcss.config.js',
+            },
+            plugins: [],
+            minimize: true,
+            use: ['sass'],
+            inject: {
+                insertAt: 'top',
+            },
+        }),
+        commonjs(),
+        json(),
+        ts({
+            transpiler: 'swc',
+            transpileOnly: true,
+        }),
+        preserveDirectives({ supressPreserveModulesWarning: true }),
+        terser({
+            compress: {
+                directives: false,
+            },
+            output: {
+                comments: 'all',
+            },
+        }),
+        process.env.CI || process.env.COMPONENT_TO_BUILD ? null : filesize(),
+    ].filter(Boolean);
