@@ -9,9 +9,9 @@ jobs:
         runs-on: ubuntu-latest
 
         env:
+            NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-            NODE_OPTIONS: '--max_old_space_size=8192'
 
         strategy:
             matrix:
@@ -32,14 +32,23 @@ jobs:
               run: yarn
 
             - name: Build
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  NODE_OPTIONS: '--max_old_space_size=8192'
               run: |
                   yarn build
 
             - name: Retry Release
-              uses: nick-fields/retry@v2
               env:
                   NO_HUSKY: 1
+                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                   NODE_OPTIONS: '--max_old_space_size=8192'
+              uses: nick-fields/retry@v2
+
               with:
                   command: |
                       npx semantic-release
